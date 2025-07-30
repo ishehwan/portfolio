@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   Typography,
-  Grid,
+  // Grid,
   Chip,
   Avatar,
   Divider,
@@ -16,6 +16,9 @@ import {
 import { useTheme } from '../../contexts/ThemeContext';
 import SectionContainer from '../common/SectionContainer';
 import AnimatedCard from '../common/AnimatedCard';
+import notionIcon from '../../images/notion-logo.png';
+import profile from '../../images/profile.jpg';
+
 
 const ProfileSection: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -48,15 +51,15 @@ const ProfileSection: React.FC = () => {
     {
       icon: <GitHub />,
       title: 'GitHub',
-      link: 'https://github.com',
+      link: 'https://github.com/ishehwan',
       color: '#333',
     },
     {
       icon: (
         <Box
           component="img"
-          src="/images/notion-logo.png"
-          alt="Notion"
+          src={notionIcon}
+          alt="notion logo"
           sx={{
             width: 24,
             height: 24,
@@ -65,7 +68,7 @@ const ProfileSection: React.FC = () => {
         />
       ),
       title: 'Notion',
-      link: 'https://notion.so',
+      link: 'https://www.notion.so/23beb6ba49cf8012b6aff5a23c3a5fe6?source=copy_link',
       color: '#000000',
     },
   ];
@@ -76,7 +79,8 @@ const ProfileSection: React.FC = () => {
         <Box sx={{ width: { xs: '100%', md: '40%' } }}>
           <AnimatedCard sx={{ textAlign: 'center', height: '100%' }}>
             <Avatar
-              src="/images/profile.jpg"
+              src={profile}
+              alt="profile"
               sx={{
                 width: 120,
                 height: 120,
@@ -208,6 +212,37 @@ const ProfileSection: React.FC = () => {
                 </Typography>
                 <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
                   1994.09.06
+                </Typography>
+              </Box>
+              <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
+                <Typography 
+                  variant="subtitle1" 
+                  sx={{ 
+                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
+                    fontWeight: 'bold',
+                    mb: 1,
+                  }}
+                >
+                  거주지
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
+                  서울시 광진구 구의동
+                </Typography>
+              </Box>
+              
+              <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
+                <Typography 
+                  variant="subtitle1" 
+                  sx={{ 
+                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
+                    fontWeight: 'bold',
+                    mb: 1,
+                  }}
+                >
+                  병역
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
+                  군필(육군 만기전역)
                 </Typography>
               </Box>
             </Box>
