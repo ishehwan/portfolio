@@ -83,7 +83,7 @@ const Header: React.FC = () => {
           zIndex: muiTheme.zIndex.drawer + 1,
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', height:80 }}>
           <Typography 
             variant="h5" 
             component="div" 
