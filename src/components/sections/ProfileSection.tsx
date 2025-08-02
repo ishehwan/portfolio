@@ -14,22 +14,27 @@ import {
   GitHub,
 } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
-import SectionContainer from '../common/SectionContainer';
+import SectionWrapper from '../common/SectionWrapper';
 import AnimatedCard from '../common/AnimatedCard';
+import { colors } from '../../theme/colors';
 import notionIcon from '../../images/notion-logo.png';
 import profile from '../../images/profile.jpg';
 
 
 const ProfileSection: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const themeColors = isDarkMode ? colors.dark : colors.light;
 
   const skills = [
-    { label: "React-TypeScript", color: "primary" },
-    { label: "Java-Spring", color: "secondary" },
+    { label: "React", color: "primary" },
+    { label: "TypeScript", color: "primary" },
+    { label: "Spring Boot", color: "secondary" },
     { label: "Node.js", color: "success" },
-    { label: "PostgreSQL", color: "info" },
-    { label: "MongoDB", color: "warning" },
-    { label: "AWS", color: "error" },
+    { label: "MySQL", color: "info" }
+  ];
+  const qualifications = [
+    { label: "정보처리산업기사", color: "primary" },
+    { label: "컴퓨터활용능력2급", color: "primary" },
   ];
 
   const contactInfo = [
@@ -74,7 +79,7 @@ const ProfileSection: React.FC = () => {
   ];
 
   return (
-    <SectionContainer id="profile" title="프로필">
+    <SectionWrapper id="profile" title="프로필">
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
         <Box sx={{ width: { xs: '100%', md: '40%' } }}>
           <AnimatedCard sx={{ textAlign: 'center', height: '100%' }}>
@@ -87,9 +92,9 @@ const ProfileSection: React.FC = () => {
                 mx: 'auto',
                 mb: 2,
                 fontSize: '2.5rem',
-                background: 'linear-gradient(45deg, #2e7d32, #4caf50)',
+                background: `linear-gradient(45deg, ${themeColors.primary}, ${themeColors.secondary})`,
                 border: '3px solid',
-                borderColor: isDarkMode ? '#4caf50' : '#2e7d32',
+                borderColor: themeColors.primary,
               }}
             >
               LeeJihwan
@@ -111,7 +116,7 @@ const ProfileSection: React.FC = () => {
               label="풀스택 개발자"
               sx={{
                 mb: 2,
-                backgroundColor: isDarkMode ? '#2e7d32' : '#4caf50',
+                backgroundColor: themeColors.primary,
                 color: 'white',
                 fontWeight: 'bold',
                 fontSize: '0.9rem',
@@ -124,38 +129,20 @@ const ProfileSection: React.FC = () => {
                 color: isDarkMode ? '#c8e6c9' : '#616161',
                 fontSize: '1rem',
                 lineHeight: 1.5,
-                textAlign: 'left',
+                textAlign: 'center',
                 mb: 2,
               }}
             >
                함께 일하고 싶은 풀스택 개발자
             </Typography>
-
-            <Divider sx={{ my: 2, borderColor: isDarkMode ? '#2e7d32' : '#4caf50' }} />
-
-            <Box sx={{ textAlign: 'left' }}>
-              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', color: isDarkMode ? '#e8f5e8' : '#424242' }}>
-                연락처
-              </Typography>
-              {contactInfo.map((info, index) => (
-                <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <Box sx={{ color: isDarkMode ? '#4caf50' : '#2e7d32' }}>
-                    {info.icon}
-                  </Box>
-                  <Typography variant="body2" sx={{ color: isDarkMode ? '#c8e6c9' : '#616161' }}>
-                    {info.value}
-                  </Typography>
-                </Box>
-              ))}
-              
-              <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
+              <Box sx={{ display: 'flex', gap: 1, mt: 2, justifyContent:'center'}}>
                 {socialLinks.map((social, index) => (
                   <IconButton
                     key={index}
                     sx={{
                       color: social.color,
                       '&:hover': {
-                        backgroundColor: isDarkMode ? '#2e7d32' : '#4caf50',
+                        backgroundColor: themeColors.primary,
                         color: 'white',
                       },
                     }}
@@ -165,6 +152,24 @@ const ProfileSection: React.FC = () => {
                   </IconButton>
                 ))}
               </Box>
+
+            <Divider sx={{ my: 2, borderColor: themeColors.primary }} />
+
+            <Box sx={{ textAlign: 'left' }}>
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', color: isDarkMode ? '#e8f5e8' : '#424242' }}>
+                연락처
+              </Typography>
+              {contactInfo.map((info, index) => (
+                <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                  <Box sx={{ color: themeColors.primary }}>
+                    {info.icon}
+                  </Box>
+                  <Typography variant="body2" sx={{ color: isDarkMode ? '#c8e6c9' : '#616161' }}>
+                    {info.value}
+                  </Typography>
+                </Box>
+              ))}
+              
             </Box>
           </AnimatedCard>
         </Box>
@@ -184,70 +189,70 @@ const ProfileSection: React.FC = () => {
             
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, flexWrap: 'wrap', mb: 3 }}>
               <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
-                <Typography 
-                  variant="subtitle1" 
-                  sx={{ 
-                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
-                    fontWeight: 'bold',
-                    mb: 1,
-                  }}
-                >
-                  이름
-                </Typography>
+                                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      color: themeColors.primary, 
+                      fontWeight: 'bold',
+                      mb: 1,
+                    }}
+                  >
+                    이름
+                  </Typography>
                 <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
                   이지환
                 </Typography>
               </Box>
               
               <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
-                <Typography 
-                  variant="subtitle1" 
-                  sx={{ 
-                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
-                    fontWeight: 'bold',
-                    mb: 1,
-                  }}
-                >
-                  생년월일
-                </Typography>
+                                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      color: themeColors.primary, 
+                      fontWeight: 'bold',
+                      mb: 1,
+                    }}
+                  >
+                    생년월일
+                  </Typography>
                 <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
                   1994.09.06
                 </Typography>
               </Box>
               <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
-                <Typography 
-                  variant="subtitle1" 
-                  sx={{ 
-                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
-                    fontWeight: 'bold',
-                    mb: 1,
-                  }}
-                >
-                  거주지
-                </Typography>
+                                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      color: themeColors.primary, 
+                      fontWeight: 'bold',
+                      mb: 1,
+                    }}
+                  >
+                    거주지
+                  </Typography>
                 <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
                   서울시 광진구 구의동
                 </Typography>
               </Box>
               
               <Box sx={{ width: { xs: '100%', sm: '48%' } }}>
-                <Typography 
-                  variant="subtitle1" 
-                  sx={{ 
-                    color: isDarkMode ? '#4caf50' : '#2e7d32', 
-                    fontWeight: 'bold',
-                    mb: 1,
-                  }}
-                >
-                  병역
-                </Typography>
+                                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      color: themeColors.primary, 
+                      fontWeight: 'bold',
+                      mb: 1,
+                    }}
+                  >
+                    병역
+                  </Typography>
                 <Typography variant="body1" sx={{ fontSize: '1rem', textAlign: 'left' }}>
                   군필(육군 만기전역)
                 </Typography>
               </Box>
             </Box>
 
-            <Divider sx={{ my: 3, borderColor: isDarkMode ? '#2e7d32' : '#4caf50' }} />
+            <Divider sx={{ my: 3, borderColor: themeColors.primary }} />
 
             <Box>
               <Typography 
@@ -258,9 +263,9 @@ const ProfileSection: React.FC = () => {
                   color: isDarkMode ? '#e8f5e8' : '#424242',
                 }}
               >
-                주요 기술스택
+                주요 기술 스택
               </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
                 {skills.map((skill, index) => (
                   <Chip 
                     key={index}
@@ -269,12 +274,45 @@ const ProfileSection: React.FC = () => {
                     variant="outlined"
                     size="small"
                     sx={{
-                      borderColor: isDarkMode ? '#4caf50' : '#2e7d32',
-                      color: isDarkMode ? '#4caf50' : '#2e7d32',
+                      borderColor: themeColors.primary,
+                      color: themeColors.primary,
                       fontWeight: 'bold',
                       fontSize: '0.8rem',
                       '&:hover': {
-                        backgroundColor: isDarkMode ? '#2e7d32' : '#4caf50',
+                        backgroundColor: themeColors.primary,
+                        color: 'white',
+                      },
+                    }}
+                  />
+                ))}
+              </Box>
+            </Box>
+            <Box>
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  mb: 2, 
+                  fontWeight: 'bold',
+                  color: isDarkMode ? '#e8f5e8' : '#424242',
+                }}
+              >
+                자격증
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {qualifications.map((skill, index) => (
+                  <Chip 
+                    key={index}
+                    label={skill.label} 
+                    color={skill.color as any}
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                      borderColor: themeColors.primary,
+                      color: themeColors.primary,
+                      fontWeight: 'bold',
+                      fontSize: '0.8rem',
+                      '&:hover': {
+                        backgroundColor: themeColors.primary,
                         color: 'white',
                       },
                     }}
@@ -285,7 +323,7 @@ const ProfileSection: React.FC = () => {
           </AnimatedCard>
         </Box>
       </Box>
-    </SectionContainer>
+    </SectionWrapper>
   );
 };
 

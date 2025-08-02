@@ -37,7 +37,7 @@ const Header: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = 64;
+      const headerHeight = 80;
       const elementPosition = element.offsetTop - headerHeight;
       window.scrollTo({
         top: elementPosition,
@@ -52,25 +52,13 @@ const Header: React.FC = () => {
   };
 
   const drawerContent = (
-    <Box sx={{ width: 250, pt: 2 }}>
+    <Box sx={{ width: 250, pt: 8 }}> {/* pt를 8로 변경하여 헤더 아래에 표시 */}
       <List>
         {navItems.map((item) => (
           <ListItem key={item.id} disablePadding>
             <ListItemButton
               selected={activeSection === item.id}
               onClick={() => scrollToSection(item.id)}
-              sx={{
-                '&.Mui-selected': {
-                  backgroundColor: isDarkMode ? '#2e7d32' : '#4caf50',
-                  color: 'white',
-                  '&:hover': {
-                    backgroundColor: isDarkMode ? '#4caf50' : '#2e7d32',
-                  },
-                },
-                '&:hover': {
-                  backgroundColor: isDarkMode ? '#1a2a1a' : '#f0f8f0',
-                },
-              }}
             >
               <ListItemText 
                 primary={item.text}
@@ -93,16 +81,11 @@ const Header: React.FC = () => {
         position="fixed"
         sx={{
           zIndex: muiTheme.zIndex.drawer + 1,
-          background: isDarkMode 
-            ? 'linear-gradient(90deg, #0a1a0a, #1a2a1a)' 
-            : 'linear-gradient(90deg, #2e7d32, #4caf50)',
-          boxShadow: '0 2px 20px rgba(46, 125, 50, 0.3)',
-          backdropFilter: 'blur(10px)',
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Typography 
-            variant="h6" 
+            variant="h5" 
             component="div" 
             sx={{ 
               flexGrow: 0,
@@ -114,7 +97,7 @@ const Header: React.FC = () => {
             }}
             onClick={() => scrollToSection('profile')}
           >
-            Portfolio
+            Hwan Portfolio
           </Typography>
           
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -187,9 +170,8 @@ const Header: React.FC = () => {
         onClose={toggleDrawer}
         sx={{
           '& .MuiDrawer-paper': {
-            backgroundColor: isDarkMode ? '#1a2a1a' : '#ffffff',
-            color: isDarkMode ? '#e8f5e8' : '#1b5e20',
-            borderLeft: `2px solid ${isDarkMode ? '#2e7d32' : '#4caf50'}`,
+            marginTop: '64px', // 헤더 높이만큼 마진 추가
+            height: 'calc(100% - 64px)', // 헤더 높이만큼 높이 조정
           },
         }}
       >

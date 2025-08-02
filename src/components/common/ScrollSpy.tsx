@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Fab, Tooltip } from '@mui/material';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
+import { colors } from '../../theme/colors';
 
 interface ScrollSpyProps {
   sections: string[];
@@ -12,6 +13,7 @@ const ScrollSpy: React.FC<ScrollSpyProps> = ({ sections, onSectionChange }) => {
   const [activeSection, setActiveSection] = useState<string>('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const { isDarkMode } = useTheme();
+  const themeColors = isDarkMode ? colors.dark : colors.light;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,13 +59,13 @@ const ScrollSpy: React.FC<ScrollSpyProps> = ({ sections, onSectionChange }) => {
             bottom: 20,
             right: 20,
             zIndex: 1000,
-            backgroundColor: isDarkMode ? '#2e7d32' : '#4caf50',
+            backgroundColor: themeColors.primary,
             color: 'white',
             opacity: showScrollTop ? 1 : 0,
             visibility: showScrollTop ? 'visible' : 'hidden',
             transition: 'all 0.3s ease-in-out',
             '&:hover': {
-              backgroundColor: isDarkMode ? '#4caf50' : '#2e7d32',
+              backgroundColor: themeColors.secondary,
               transform: 'scale(1.1)',
             },
           }}

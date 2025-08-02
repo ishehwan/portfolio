@@ -4,34 +4,33 @@ import { useTheme } from '../../contexts/ThemeContext';
 
 interface AnimatedCardProps {
   children: React.ReactNode;
-  elevation?: number;
   sx?: any;
+  onClick?: () => void;
+  hoverEffect?: boolean;
 }
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ 
-  children, 
-  elevation = 4,
-  sx = {} 
+const AnimatedCard: React.FC<AnimatedCardProps> = ({
+  children,
+  sx = {},
+  onClick,
+  hoverEffect = true
 }) => {
   const { isDarkMode } = useTheme();
 
   return (
     <Card
-      elevation={elevation}
+      onClick={onClick}
       sx={{
-        backgroundColor: isDarkMode ? '#1a2a1a' : '#ffffff',
-        border: `2px solid ${isDarkMode ? '#2e7d32' : '#4caf50'}`,
-        borderRadius: 3,
+        cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.3s ease-in-out',
-        cursor: 'pointer',
-        '&:hover': {
+        transform: 'translateY(0)',
+        '&:hover': hoverEffect ? {
           transform: 'translateY(-8px)',
           boxShadow: isDarkMode 
-            ? '0 12px 24px rgba(46, 125, 50, 0.3)' 
-            : '0 12px 24px rgba(76, 175, 80, 0.2)',
-          borderColor: isDarkMode ? '#4caf50' : '#2e7d32',
-        },
-        ...sx,
+            ? '0 12px 40px rgba(139, 92, 246, 0.3)' 
+            : '0 12px 40px rgba(124, 58, 237, 0.2)',
+        } : {},
+        ...sx
       }}
     >
       <CardContent sx={{ p: 3 }}>

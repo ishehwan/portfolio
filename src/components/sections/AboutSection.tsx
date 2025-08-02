@@ -9,11 +9,13 @@ import {
   TrendingUp,
 } from '@mui/icons-material';
 import { useTheme } from '../../contexts/ThemeContext';
-import SectionContainer from '../common/SectionContainer';
+import SectionWrapper from '../common/SectionWrapper';
 import AnimatedCard from '../common/AnimatedCard';
+import { colors } from '../../theme/colors';
 
 const AboutSection: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const themeColors = isDarkMode ? colors.dark : colors.light;
 
   const competencies = [
     {
@@ -52,7 +54,7 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <SectionContainer id="about" title="자기소개">
+    <SectionWrapper id="about" title="자기소개">
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         <AnimatedCard>
           <Typography
@@ -64,7 +66,7 @@ const AboutSection: React.FC = () => {
               textAlign: 'left',
             }}
           >
-            항상 배우는 자세를 유지하며, 협업의 가치를 중요하게 생각하고 주도적으로 업무에 임하는 개발자 이지환입니다.
+            항상 배우는 자세를 유지하며, 협업의 가치를 중요하게 생각하고 주도적으로 업무에 임하는 개발자 이지환입니다. <br />
             새로운 기술에 대한 호기심과 학습 의지가 강하며, 팀원들과의 원활한 소통을 통해 더 나은 결과물을 만들어내는 것을 목표로 합니다.
           </Typography>
         </AnimatedCard>
@@ -79,7 +81,7 @@ const AboutSection: React.FC = () => {
               textAlign: 'left',
             }}
           >
-            "코드는 사람이 읽기 쉽게, 유지보수가 용이하게, 그리고 확장 가능하게 작성해야 한다"는 믿음으로 개발하고 있습니다.
+            "코드는 사람이 읽기 쉽게, 유지보수가 용이하게, 그리고 확장 가능하게 작성해야 한다"는 믿음으로 개발하고 있습니다. <br />
             새로운 기술을 배우는 것을 즐기며, 팀원들과의 협업을 통해 함께 성장하는 개발 문화를 만들어가고 싶습니다.
           </Typography>
         </AnimatedCard>
@@ -87,6 +89,7 @@ const AboutSection: React.FC = () => {
         <Typography
           variant="h4"
           sx={{
+            mt: 5,
             mb: 2,
             color: isDarkMode ? '#e8f5e8' : '#424242',
             fontWeight: 'bold',
@@ -102,7 +105,7 @@ const AboutSection: React.FC = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Box
                   sx={{
-                    color: isDarkMode ? '#4caf50' : '#2e7d32',
+                    color: themeColors.primary,
                     mr: 2,
                     fontSize: '1.5rem',
                   }}
@@ -148,7 +151,7 @@ const AboutSection: React.FC = () => {
                         content: '"•"',
                         position: 'absolute',
                         left: 0,
-                        color: isDarkMode ? '#4caf50' : '#2e7d32',
+                        color: themeColors.primary,
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
                       },
@@ -162,7 +165,7 @@ const AboutSection: React.FC = () => {
           ))}
         </Box>
       </Box>
-    </SectionContainer>
+    </SectionWrapper>
   );
 };
 
