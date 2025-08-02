@@ -94,7 +94,7 @@ const DetailPopup: React.FC<DetailPopupProps> = ({ open, onClose, contentId, dat
       content: (
         <Box>
           <Typography variant="body1" sx={{ color: settingColor }}>
-            Material-UI 컴포넌트를 기반으로 한 일관된 UI 설계 및 빠른 개발 경험이 있으며, 커스텀 스타일링과 다크모드, 반응형 UI 구현을 함께 진행하였습니다.
+            Material-UI 컴포넌트를 기반으로 한 일관된 UI 설계 및 빠른 개발 경험이 있으며 DataGrid및 ,커스텀 스타일링과 다크모드, 반응형 UI 구현을 함께 진행하였습니다.
           </Typography>   
         </Box>
       ),
